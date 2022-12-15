@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    parameters {
+      string defaultValue: '6', description: 'Enter number one', name: 'varOne'
+    }
+    stages {
+        stage('Square The Number') {
+            steps {
+                script{
+                    def varOne = params.varOne as int
+                    def result = varOne * varOne
+                    echo "Result is ${result}"
+                }
+            }
+        }
+    }
+}
